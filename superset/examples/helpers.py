@@ -26,7 +26,8 @@ from superset import app, db
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset.models.slice import Slice
 
-BASE_URL = "https://github.com/apache-superset/examples-data/blob/master/"
+# BASE_URL = "https://github.com/apache-superset/examples-data/blob/master/"
+BASE_URL = "http://127.0.0.1:8000/"
 
 misc_dash_slices: Set[str] = set()  # slices assembled in a 'Misc Chart' dashboard
 

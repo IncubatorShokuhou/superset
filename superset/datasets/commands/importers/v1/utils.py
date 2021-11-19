@@ -31,6 +31,8 @@ from sqlalchemy.sql.visitors import VisitableType
 from superset.connectors.sqla.models import SqlaTable
 from superset.models.core import Database
 from superset.utils.core import get_example_database
+# get the changed base_url
+from superset.examples.helpers import BASE_URL
 
 logger = logging.getLogger(__name__)
 
@@ -138,6 +140,8 @@ def import_dataset(
         table_exists = True
 
     if data_uri and (not table_exists or force_data):
+        # change github address to local
+        data_uri = data_uri.replace("https://raw.githubusercontent.com/apache-superset/examples-data/master/",BASE_URL)
         logger.info("Downloading data from %s", data_uri)
         load_data(data_uri, dataset, example_database, session)
 
